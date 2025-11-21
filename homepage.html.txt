@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Page d'accueil personnalisée</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('lune.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+    }
+    .search-box {
+      margin-top: 20%;
+    }
+    input[type="text"] {
+      width: 50%;
+      padding: 10px;
+      font-size: 18px;
+      border-radius: 5px;
+      border: none;
+    }
+    .shortcuts {
+      margin-top: 30px;
+    }
+    .shortcuts a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: white;
+      font-size: 20px;
+    }
+    #clock {
+      margin-top: 40px;
+      font-size: 24px;
+    }
+    #quote {
+      margin-top: 20px;
+      font-style: italic;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="search-box">
+    <form action="https://www.google.com/search" method="get">
+      <input type="text" name="q" placeholder="Rechercher sur Google...">
+    </form>
+  </div>
+
+  <div class="shortcuts">
+    <a href="https://www.youtube.com" target="_blank">YouTube</a>
+    <a href="https://fr.wikipedia.org" target="_blank">Wikipedia</a>
+    <a href="https://www.lemonde.fr" target="_blank">Le Monde</a>
+  </div>
+
+  <div id="clock"></div>
+  <div id="quote"></div>
+
+  <script>
+    // Horloge
+    function updateClock() {
+      const now = new Date();
+      document.getElementById('clock').textContent =
+        now.toLocaleTimeString('fr-FR');
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Citation du jour
+    const quotes = [
+      "La vie est un mystère qu'il faut vivre, et non un problème à résoudre. – Gandhi",
+      "Le succès est la somme de petits efforts répétés jour après jour. – Collier",
+      "Il n'y a qu'une façon d'échouer, c'est d'abandonner avant d'avoir réussi. – Clemenceau",
+      "Fais de ta vie un rêve, et d'un rêve une réalité. – Saint-Exupéry"
+    ];
+    const quote = quotes[Math.floor(Math.random() * quotes.length)];
+    document.getElementById('quote').textContent = quote;
+  </script>
+</body>
+</html>
